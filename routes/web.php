@@ -17,13 +17,3 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('Url', UrlController::class)
-    ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
-
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/urls', [UrlController::class, 'index'])->name('Url.index');
-        Route::post('/urls', [UrlController::class, 'store'])->name('Url.store');
-        Route::post('/urls/{id}/increment-copy-count', [UrlController::class, 'incrementCopyCount']);
-    });
-require __DIR__.'/auth.php';
