@@ -12,12 +12,6 @@ class Url extends Model
 
     protected $fillable = ['user_id','original_url', 'short_url', 'copy_count'];
 
-    /**
-     * Generate a short URL for the given original URL.
-     *
-     * @param string $originalUrl
-     * @return Url
-     */
     public static function shortenUrl($originalUrl)
     {
         $url = self::create([
@@ -32,22 +26,11 @@ class Url extends Model
         return $url;
     }
 
-    /**
-     * Increment the copy count for the URL.
-     *
-     * @return void
-     */
     public function incrementCopyCount()
     {
         $this->increment('copy_count');
     }
 
-    /**
-     * Retrieve the original URL using the short URL.
-     *
-     * @param string $shortUrl
-     * @return Url|null
-     */
     public static function getOriginalUrl($shortUrl)
     {
         $decoded = Hashids::decode($shortUrl);
