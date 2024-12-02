@@ -26,5 +26,4 @@ Route::resource('Url', UrlController::class)
         Route::post('/urls', [UrlController::class, 'store'])->name('Url.store');
         Route::post('/urls/{id}/increment-copy-count', [UrlController::class, 'incrementCopyCount']);
     });
-    
 require __DIR__.'/auth.php';
